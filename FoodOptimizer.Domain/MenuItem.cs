@@ -12,6 +12,8 @@ public class MenuItem
 
     public long RestaurantId { get; set; }
 
+    public List<Discount> Discounts { get; set; } = new List<Discount>();
+
     [Required]
     public Restaurant Restaurant { get; set; }
 
