@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FoodOptimizer.Application\FoodOptimizer.Application.csproj" />
     <ProjectReference Include="..\FoodOptimizer.Infrastructure\FoodOptimizer.Infrastructure.csproj" />
   </ItemGroup>
 

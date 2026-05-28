@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FoodOptimizer.Application\FoodOptimizer.Application.csproj" />
     <ProjectReference Include="..\FoodOptimizer.Domain\FoodOptimizer.Domain.csproj" />
   </ItemGroup>
 

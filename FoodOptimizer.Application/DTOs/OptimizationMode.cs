@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace FoodOptimizer.Application.DTOs
 {
-    internal class OptimizationMode
+    public enum OptimizationMode
     {
+        Cheapest,
+        Nutritious,
+        Diverse
     }
 }
