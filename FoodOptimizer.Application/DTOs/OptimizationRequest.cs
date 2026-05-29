@@ -17,5 +17,7 @@ namespace FoodOptimizer.Application.DTOs
         public OptimizationMode Mode { get; set; }
 
         public List<Category> DesiredCategories { get; set; }
+
+        public int Count { get; set; } = 3;
     }
 }

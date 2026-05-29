@@ -8,8 +8,7 @@ namespace FoodOptimizer.Application.DTOs
 {
     public enum OptimizationMode
     {
-        Cheapest,
-        Nutritious,
-        Diverse
+        MaxCalories,
+        MaxDiversity
     }
 }

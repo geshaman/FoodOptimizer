@@ -26,4 +26,8 @@
     <ProjectReference Include="..\FoodOptimizer.Infrastructure\FoodOptimizer.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

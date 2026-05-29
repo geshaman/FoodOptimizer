@@ -89,13 +89,15 @@ namespace FoodOptimizer.Application.Services
 
                 foreach (Category category in desiredCategories)
                 {
-                    int skip = category == Category.Entree ? i : Random.Shared.Next(0, 3);
-                    MenuItem ? bestItem = filteredMenu
+                    var categoryItems = filteredMenu
                         .Where(m => m.Category == category
                             && GetEffectivePrice(m) <= remainingBudget)
                         .OrderBy(m => GetEffectivePrice(m))
-                        .Skip(skip)
-                        .FirstOrDefault();
+                        .ToList();
+
+                    int skip = category == Category.Entree ? i : Random.Shared.Next(0, categoryItems.Count);
+                    MenuItem? bestItem = categoryItems.Skip(skip).FirstOrDefault()
+                        ?? categoryItems.FirstOrDefault();
 
                     if (bestItem == null) continue;
 
