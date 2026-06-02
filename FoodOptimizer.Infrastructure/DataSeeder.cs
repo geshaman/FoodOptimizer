@@ -117,6 +117,20 @@ namespace FoodOptimizer.Infrastructure
                         Price = 146,
                         Category = Category.Drinks,
                         Calories = 106
+                    },
+                    new MenuItem
+                    {
+                        Name = "Айс Де Люкс Карамель",
+                        Price = 147,
+                        Category = Category.Dessert,
+                        Calories = 374
+                    },
+                    new MenuItem
+                    {
+                        Name = "Соус Сырный",
+                        Price = 48,
+                        Category = Category.Sauces,
+                        Calories = 91
                     }
                 }
             };

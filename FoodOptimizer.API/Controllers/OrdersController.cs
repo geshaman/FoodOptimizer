@@ -20,8 +20,15 @@ namespace FoodOptimizer.API.Controllers
         [HttpPost("optimize")]
         public async Task<ActionResult> Optimize([FromBody] OptimizationRequest request)
         {
-            var variants = await _optimizerService.GetOrderVariantsAsync(request);
-            return Ok(variants);
+            try
+            {
+                var variants = await _optimizerService.GetOrderVariantsAsync(request);
+                return Ok(variants);
+            }
+            catch (Exception ex) 
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
         }
     }
 }
