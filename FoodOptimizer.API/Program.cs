@@ -27,6 +27,14 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    try
+    {
+        context.Database.Migrate();
+    }
+    catch (Exception ex) 
+    {
+        Console.WriteLine($"Migration error: {ex.Message}");
+    }
     DataSeeder.Seed(context);
 }
 
