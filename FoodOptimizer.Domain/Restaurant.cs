@@ -34,10 +34,20 @@ namespace FoodOptimizer.Domain
         [Required]
         public TimeOnly CloseTime { get; set; }
 
-        public bool IsOpen => TimeOnly.FromDateTime(DateTime.Now) >= OpenTime
-                && TimeOnly.FromDateTime(DateTime.Now) <= CloseTime;
+        public string TimeZone { get; set; } = "Europe/Moscow";
+        public bool IsOpen
+        {
+            get
+            {
+                var tz = NodaTime.DateTimeZoneProviders.Tzdb[TimeZone];
+                var now = NodaTime.SystemClock.Instance.GetCurrentInstant();
+                var localTime = now.InZone(tz).TimeOfDay;
+                var localTimeOnly = new TimeOnly(localTime.Hour, localTime.Minute, localTime.Second);
+                return localTimeOnly >= OpenTime && localTimeOnly <= CloseTime;
+            }
+        }
 
-        public long BrandId { get; set; }
+        public long? BrandId { get; set; }
         public RestaurantBrand Brand { get; set; }
     }
 }
