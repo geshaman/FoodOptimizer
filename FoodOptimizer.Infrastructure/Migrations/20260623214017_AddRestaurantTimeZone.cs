@@ -27,7 +27,7 @@ namespace FoodOptimizer.Infrastructure.Migrations
                 table: "restaurants",
                 type: "text",
                 nullable: false,
-                defaultValue: "");
+                defaultValue: "Europe/Moscow");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_restaurants_restaurant_brands_BrandId",
