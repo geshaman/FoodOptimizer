@@ -15,8 +15,7 @@ namespace FoodOptimizer.Infrastructure.Migrations
                 name: "BrandId",
                 table: "restaurants",
                 type: "bigint",
-                nullable: false,
-                defaultValue: 0L);
+                nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "restaurant_brands",
@@ -36,13 +35,15 @@ namespace FoodOptimizer.Infrastructure.Migrations
                 table: "restaurants",
                 column: "BrandId");
 
+            migrationBuilder.Sql("UPDATE restaurants SET \"BrandId\" = NULL;");
+
             migrationBuilder.AddForeignKey(
                 name: "FK_restaurants_restaurant_brands_BrandId",
                 table: "restaurants",
                 column: "BrandId",
                 principalTable: "restaurant_brands",
                 principalColumn: "Id",
-                onDelete: ReferentialAction.Cascade);
+                onDelete: ReferentialAction.SetNull);
         }
 
         /// <inheritdoc />
