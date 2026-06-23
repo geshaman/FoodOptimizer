@@ -23,6 +23,10 @@ namespace FoodOptimizer.Infrastructure.Configurations
                 .IsRequired();
             builder.Property(r => r.CloseTime)
                 .IsRequired();
+            builder.Property(r => r.TimeZone)
+                .HasColumnName("TimeZone")
+                .IsRequired()
+                .HasMaxLength(50);
             builder.HasMany(r => r.MenuItems)
                 .WithOne(m => m.Restaurant)
                 .HasForeignKey(m => m.RestaurantId);

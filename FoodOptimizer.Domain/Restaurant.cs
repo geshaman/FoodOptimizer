@@ -39,6 +39,7 @@ namespace FoodOptimizer.Domain
         {
             get
             {
+                Console.WriteLine($"TimeZone value: '{TimeZone}', length: {TimeZone?.Length}");
                 var tz = NodaTime.DateTimeZoneProviders.Tzdb[TimeZone];
                 var now = NodaTime.SystemClock.Instance.GetCurrentInstant();
                 var localTime = now.InZone(tz).TimeOfDay;
