@@ -13,6 +13,7 @@ namespace FoodOptimizer.Domain
         Dessert,
         Drinks,
         Sauces,
-        Breakfast
+        Breakfast,
+        Combo
     }
 }

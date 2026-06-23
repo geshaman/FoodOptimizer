@@ -3,6 +3,7 @@ using System;
 using FoodOptimizer.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FoodOptimizer.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260606213300_IncreaseMenuItemNameLength")]
+    partial class IncreaseMenuItemNameLength
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,9 +103,6 @@ namespace FoodOptimizer.Infrastructure.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<long>("BrandId")
-                        .HasColumnType("bigint");
-
                     b.Property<string>("City")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -121,27 +121,7 @@ namespace FoodOptimizer.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("BrandId");
-
                     b.ToTable("restaurants", (string)null);
-                });
-
-            modelBuilder.Entity("FoodOptimizer.Domain.RestaurantBrand", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("restaurant_brands", (string)null);
                 });
 
             modelBuilder.Entity("FoodOptimizer.Domain.Discount", b =>
@@ -166,17 +146,6 @@ namespace FoodOptimizer.Infrastructure.Migrations
                     b.Navigation("Restaurant");
                 });
 
-            modelBuilder.Entity("FoodOptimizer.Domain.Restaurant", b =>
-                {
-                    b.HasOne("FoodOptimizer.Domain.RestaurantBrand", "Brand")
-                        .WithMany("Locations")
-                        .HasForeignKey("BrandId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Brand");
-                });
-
             modelBuilder.Entity("FoodOptimizer.Domain.MenuItem", b =>
                 {
                     b.Navigation("Discounts");
@@ -185,11 +154,6 @@ namespace FoodOptimizer.Infrastructure.Migrations
             modelBuilder.Entity("FoodOptimizer.Domain.Restaurant", b =>
                 {
                     b.Navigation("MenuItems");
-                });
-
-            modelBuilder.Entity("FoodOptimizer.Domain.RestaurantBrand", b =>
-                {
-                    b.Navigation("Locations");
                 });
 #pragma warning restore 612, 618
         }

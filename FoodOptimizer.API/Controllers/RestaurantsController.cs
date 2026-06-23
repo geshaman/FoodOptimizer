@@ -13,19 +13,5 @@ namespace FoodOptimizer.API.Controllers
         {
             _repository = repository;
         }
-
-        [HttpGet]
-        public async Task<IActionResult> GetByCity([FromQuery] string city)
-        {
-            try
-            {
-                var restaurants = await _repository.GetRestaurantsByCityAsync(city);
-                return Ok(restaurants);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = ex.Message });
-            }
-        }
     }
 }

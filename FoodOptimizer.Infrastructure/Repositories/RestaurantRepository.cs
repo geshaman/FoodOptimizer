@@ -18,13 +18,6 @@ namespace FoodOptimizer.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<List<Restaurant>> GetRestaurantsByCityAsync(string city)
-        {
-            return await _context.Restaurants
-                .Where(r => r.City == city)
-                .ToListAsync();
-        }
-
         public async Task<Restaurant?> GetRestaurantWithMenuByIdAsync(long id)
         {
             return await _context.Restaurants

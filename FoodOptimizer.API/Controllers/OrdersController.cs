@@ -1,4 +1,3 @@
-
 using FoodOptimizer.Application.DTOs;
 using FoodOptimizer.Application.Services;
 using Microsoft.AspNetCore.Mvc;

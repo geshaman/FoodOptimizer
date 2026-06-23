@@ -36,5 +36,8 @@ namespace FoodOptimizer.Domain
 
         public bool IsOpen => TimeOnly.FromDateTime(DateTime.Now) >= OpenTime
                 && TimeOnly.FromDateTime(DateTime.Now) <= CloseTime;
+
+        public long BrandId { get; set; }
+        public RestaurantBrand Brand { get; set; }
     }
 }

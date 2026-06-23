@@ -17,6 +17,8 @@ namespace FoodOptimizer.Infrastructure
 
         public DbSet<Discount> Discounts { get; set; }
 
+        public DbSet<RestaurantBrand> Brands { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,6 +31,7 @@ namespace FoodOptimizer.Infrastructure
             modelBuilder.ApplyConfiguration(new RestaurantConfiguration());
             modelBuilder.ApplyConfiguration(new MenuItemConfiguration());
             modelBuilder.ApplyConfiguration(new DiscountConfiguration());
+            modelBuilder.ApplyConfiguration(new RestaurantBrandConfiguration());
             base.OnModelCreating(modelBuilder);
         }
     }

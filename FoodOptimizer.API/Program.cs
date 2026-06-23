@@ -20,6 +20,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddScoped<IRestaurantRepository, RestaurantRepository>();
+builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<IBrandRepository, BrandRepository>();
 builder.Services.AddScoped<IOrderOptimizerService, OrderOptimizerService>();
 
 var app = builder.Build();
@@ -35,7 +37,6 @@ using (var scope = app.Services.CreateScope())
     {
         Console.WriteLine($"Migration error: {ex.Message}");
     }
-    DataSeeder.Seed(context);
 }
 
 // Configure the HTTP request pipeline.

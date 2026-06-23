@@ -19,7 +19,7 @@ public class MenuItem
 
     [Required]
     [MinLength(2)]
-    [MaxLength(50)]
+    [MaxLength(200)]
     public string Name { get; set; }
 
     [Required]
